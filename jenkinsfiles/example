@@ -62,6 +62,7 @@ pipeline {
         echo 'Deploy to QA'
         sh 'sleep 4'
       }
+    }
     stage('Deploy to Prod') {
       agent any
       steps {
