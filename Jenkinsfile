@@ -159,6 +159,21 @@ pipeline {
         input 'Deploy to Prod?'
       }
     }
+
+stage('Staging') {
+      when {
+        branch 'master''
+      }
+      agent {
+        docker {
+          image 'maven:3.5.0'
+          args '--network=${LDOP_NETWORK_NAME}'
+        }
+      }
+      steps {
+        echo "STAGING""
+      }
+    }
     
     stage('Blue/Green Prod Deploy') {
       when {
