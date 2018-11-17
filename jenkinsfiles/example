@@ -28,6 +28,20 @@ pipeline {
         }
       }
     }
+    stage('Test') {
+      agent any
+      steps {
+        echo 'Test'
+        sh 'sleep 4'
+      }
+    }
+    stage('Stage') {
+      agent any
+      steps {
+        echo 'Stage'
+        sh 'sleep 4'
+      }
+    }
     stage('Deploy to Dev') {
       agent any
       steps {
@@ -42,10 +56,16 @@ pipeline {
         sh 'sleep 4'
       }
     }
-    stage('Another stage') {
+    stage('Deploy to QA') {
       agent any
       steps {
-        //sample dummy step
+        echo 'Deploy to QA'
+        sh 'sleep 4'
+      }
+    stage('Deploy to Prod') {
+      agent any
+      steps {
+        echo 'Deploy to Prod'
         sh 'sleep 4'
       }
     }
